@@ -13,6 +13,10 @@ import Persistence
 @MainActor
 @Observable
 public final class AppEnvironment {
+    /// The SwiftData container backing every store. Held here so it outlives the
+    /// derived `ModelContext`s (a context does not retain its container — see the
+    /// GOTCHA in CLAUDE.md). The app also retains it via `@main`.
+    public let container: ModelContainer
     public let deposits: DepositStore
     public let watchlist: WatchlistStore
     public let calcDrafts: CalcDraftStore
@@ -79,6 +83,7 @@ public final class AppEnvironment {
         registry: ExchangeRegistry,
         notificationScheduler: NotificationScheduling = UserNotificationScheduler()
     ) {
+        self.container = container
         let context = container.mainContext
         let cache = SpecCache(context: context)
         self.deposits = DepositStore(context: context)

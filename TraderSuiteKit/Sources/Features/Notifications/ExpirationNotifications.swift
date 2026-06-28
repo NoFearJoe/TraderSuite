@@ -34,8 +34,8 @@ public struct WatchlistExpiry: Equatable, Sendable {
 public enum ExpirationNotificationBuilder {
     /// Days before the last trading day to remind (and 0 = on the day).
     public static let defaultLeadDays = [5, 1, 0]
-    /// Hour of day (Moscow time) to fire reminders.
-    public static let hourOfDay = 9
+    /// Hour of day (in the user's local time zone) to fire reminders.
+    public static let hourOfDay = 10
 
     static var moscowCalendar: Calendar {
         var calendar = Calendar(identifier: .gregorian)
@@ -46,17 +46,29 @@ public enum ExpirationNotificationBuilder {
     /// Build reminders for the given contracts. Only fire dates strictly in the
     /// future (relative to `now`) are emitted; one notification per (contract,
     /// lead day) pair, with a stable id so re-scheduling replaces cleanly.
+    ///
+    /// The contract expiration is an ISS last-trade *date* in Moscow time, so the
+    /// trading day is read in `Europe/Moscow`; the reminder then fires at
+    /// `hourOfDay` (15:00) in the user's `timeZone` on `(trade date − lead)`.
     public static func build(
         for contracts: [WatchlistExpiry],
         now: Date,
-        leadDays: [Int] = defaultLeadDays
+        leadDays: [Int] = defaultLeadDays,
+        timeZone: TimeZone = .current
     ) -> [ExpirationNotification] {
-        let calendar = moscowCalendar
+        let moscow = moscowCalendar
+        var local = Calendar(identifier: .gregorian)
+        local.timeZone = timeZone
+
         var result: [ExpirationNotification] = []
         for contract in contracts {
+            // Read the last-trade day in Moscow so the lead-day countdown tracks
+            // trading dates, not whatever calendar day the user happens to be on.
+            let tradeDay = moscow.dateComponents([.year, .month, .day], from: contract.expiration)
             for lead in leadDays {
-                guard let day = calendar.date(byAdding: .day, value: -lead, to: contract.expiration),
-                      let fire = calendar.date(
+                guard let tradeMidnightLocal = local.date(from: tradeDay),
+                      let day = local.date(byAdding: .day, value: -lead, to: tradeMidnightLocal),
+                      let fire = local.date(
                         bySettingHour: hourOfDay, minute: 0, second: 0, of: day
                       ),
                       fire > now

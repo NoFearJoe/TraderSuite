@@ -50,9 +50,12 @@ App          -> Features      @main, injects ModelContainer
   `WatchlistStore`, `SpecCache`) over a `ModelContext` — never touch SwiftData
   from Core/ExchangeKit. Stores take exchange identity as a raw string
   (`ExchangeID.rawValue`); `Persistence` does not depend on `ExchangeKit`.
-- CloudKit sync is OFF by default (`PersistenceContainer.make` →
-  `CloudKitMode.disabled`) so local ad-hoc-signed builds work; enabling it needs
-  the iCloud entitlement + a Development Team.
+- CloudKit sync is ON: the app calls `PersistenceContainer.make(cloudKit: .automatic)`,
+  which resolves the `iCloud.com.mesterra.tradersuite` container from
+  `TraderSuite.entitlements`. This requires real signing (automatic, Development
+  Team — set in `project.yml`, not ad-hoc), so keep `project.yml` and the
+  generated `.xcodeproj` in sync. `make` still defaults to `CloudKitMode.disabled`,
+  and tests/previews use `inMemory: true` (which forces sync off).
 - GOTCHA: a SwiftData `ModelContext` does NOT retain its `ModelContainer`. Keep
   the container alive for as long as any context/store derived from it is in use
   (the app holds it in `@main`; tests store it as a suite property) — otherwise
@@ -76,9 +79,15 @@ App          -> Features      @main, injects ModelContainer
   expiration status is computed in `ExpirationPolicy`, expired contracts auto-roll
   via `ExchangeAdapter.frontInstrument`, and local reminders are scheduled through
   the `NotificationScheduling` seam. Tested in `FeaturesTests`/`ExchangeKitTests`.
-- Phase 6 (StoreKit 2 subscription + paywall gating): NEXT.
-- Phase 7 (localization RU/EN, dark mode, macOS polish).
-- Phase 8 (test coverage, TestFlight, App Store).
+- Phase 6 (StoreKit 2 subscription + paywall gating): DONE — `SubscriptionStore`
+  tracks the live entitlement over StoreKit 2 transactions, `SubscriptionView`
+  hosts the native paywall, and `ProGateModifier`/`proGated(_:)` enforce free-tier
+  caps (`SubscriptionLimit`: 1 deposit/exchange, 3 watchlist instruments).
+- Phase 7 (localization RU/EN, dark mode, macOS polish): DONE — RU + EN at full
+  key parity (`App/{ru,en}.lproj/Localizable.strings`). CloudKit sync is ON
+  (`PersistenceContainer.make(cloudKit: .automatic)`), signed with a Development
+  Team via the `iCloud.com.mesterra.tradersuite` container in the entitlements.
+- Phase 8 (test coverage, TestFlight, App Store): NEXT.
 
 ## Domain rules that matter
 

@@ -20,6 +20,9 @@ public final class SubscriptionStore {
 
     /// Refresh from current entitlements and start listening for changes (idempotent).
     public func start() async {
+        // Screenshot capture forces PRO on so the paywall and free-tier caps stay
+        // out of the App Store shots. Never reached in a normal launch.
+        if UITestMode.proUnlocked { isSubscribed = true; return }
         await refresh()
         guard updatesTask == nil else { return }
         updatesTask = Task { [weak self] in

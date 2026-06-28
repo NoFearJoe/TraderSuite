@@ -75,8 +75,9 @@ public struct UserNotificationScheduler: NotificationScheduling {
             center.removePendingNotificationRequests(withIdentifiers: staleIDs)
         }
 
-        var calendar = Calendar(identifier: .gregorian)
-        if let moscow = TimeZone(identifier: "Europe/Moscow") { calendar.timeZone = moscow }
+        // Decode the fire instant in the user's local time zone so the trigger
+        // fires at 15:00 local — the builder also produced it in local time.
+        let calendar = Calendar.current
 
         for notification in notifications {
             let content = UNMutableNotificationContent()
@@ -84,9 +85,10 @@ public struct UserNotificationScheduler: NotificationScheduling {
             content.body = notification.body
             content.sound = .default
 
-            let components = calendar.dateComponents(
+            var components = calendar.dateComponents(
                 [.year, .month, .day, .hour, .minute], from: notification.fireDate
             )
+            components.timeZone = calendar.timeZone
             let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
             let request = UNNotificationRequest(
                 identifier: notification.id, content: content, trigger: trigger

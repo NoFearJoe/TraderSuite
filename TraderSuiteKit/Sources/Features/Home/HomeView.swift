@@ -7,7 +7,8 @@ import Persistence
 /// - the watchlist list for the selected exchange (or a placeholder when empty);
 /// - a native bottom search field to find and add instruments.
 ///
-/// Every destination it pushes is a placeholder for now (see `Placeholders.swift`).
+/// Destinations it pushes (settings, instrument info, lot/averaging calculators)
+/// are resolved in `destination(_:model:)` below.
 struct HomeView: View {
     @Environment(AppEnvironment.self) private var env
     @State private var model: WatchlistViewModel?
@@ -40,6 +41,7 @@ struct HomeView: View {
                         Image(systemName: "gearshape")
                     }
                     .accessibilityLabel(Text("settings_title"))
+                    .accessibilityIdentifier("home.settings")
                 }
                 ToolbarItem(placement: .primaryAction) {
                     ExchangeMenu(selected: $env.selectedExchange)
@@ -62,6 +64,7 @@ struct HomeView: View {
         }
         .task { await start() }
         .task { await env.subscriptions.start() }
+        .onAppear { UITestMode.writeMarker("start") } // video: recording begins here
     }
 
     // MARK: Lifecycle
@@ -315,6 +318,7 @@ private struct WatchlistRow: View {
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
+            .accessibilityIdentifier("watchlistRow.open")
 
             Button(action: onAveraging) {
                 VStack(spacing: 3) {
@@ -329,6 +333,7 @@ private struct WatchlistRow: View {
             }
             .buttonStyle(.bordered)
             .buttonBorderShape(.roundedRectangle(radius: 10))
+            .accessibilityIdentifier("watchlistRow.averaging")
 
             Button(action: onCalc) {
                 VStack(spacing: 3) {
@@ -343,6 +348,7 @@ private struct WatchlistRow: View {
             }
             .buttonStyle(.borderedProminent)
             .buttonBorderShape(.roundedRectangle(radius: 10))
+            .accessibilityIdentifier("watchlistRow.calc")
         }
     }
 }
@@ -412,6 +418,7 @@ private struct SearchResultsList: View {
                                 Button { add(contract) } label: { contractRow(contract) }
                                     .buttonStyle(.plain)
                                     .proGated(isFavLimitReached)
+                                    .accessibilityIdentifier("searchResult.\(contract.symbol)")
                             }
                         } header: {
                             header(group)

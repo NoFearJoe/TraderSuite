@@ -15,7 +15,8 @@ struct AveragingCalcView: View {
     @State private var specError: String?
     @State private var showingDepositPicker = false
     @State private var selectedDepositID: UUID?
-    @State private var resultExpanded = false
+    // Expanded during demo capture so the card shows the full breakdown.
+    @State private var resultExpanded = UITestMode.isActive
     @State private var draftLoaded = false
 
     var body: some View {

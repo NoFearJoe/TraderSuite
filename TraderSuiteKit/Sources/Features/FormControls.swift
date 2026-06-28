@@ -5,10 +5,14 @@ import SwiftUI
 struct DecimalField: View {
     let title: String
     @Binding var text: String
+    /// Stable identifier for UI tests (the localized title isn't reliable across
+    /// languages). Falls back to the title when unset.
+    var accessibilityID: String?
 
-    init(_ title: String, text: Binding<String>) {
+    init(_ title: String, text: Binding<String>, accessibilityID: String? = nil) {
         self.title = title
         self._text = text
+        self.accessibilityID = accessibilityID
     }
 
     var body: some View {
@@ -20,6 +24,7 @@ struct DecimalField: View {
                 #if os(iOS)
                 .keyboardType(.decimalPad)
                 #endif
+                .accessibilityIdentifier(accessibilityID ?? title)
         }
     }
 }

@@ -11,7 +11,7 @@ struct SettingsView: View {
 
     @State private var showSubscription = false
 
-    /// Placeholder App Store link until the app is published.
+    /// App Store listing, used by the share and "rate the app" actions.
     private let appStoreURL = URL(string: "https://apps.apple.com/app/id6782816260")!
     private let supportEmail = URL(string: "mailto:mesterra.co@gmail.com")!
 

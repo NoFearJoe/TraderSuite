@@ -19,11 +19,13 @@ struct RiskSelector: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
                     ForEach(presets, id: \.self) { percent in
-                        chip(label(percent), selected: choice == .preset(percent)) {
+                        chip(label(percent),
+                             id: "risk.preset.\(NSDecimalNumber(decimal: percent).stringValue)",
+                             selected: choice == .preset(percent)) {
                             choice = .preset(percent)
                         }
                     }
-                    chip(L("risk_custom"), selected: choice == .custom) {
+                    chip(L("risk_custom"), id: "risk.custom", selected: choice == .custom) {
                         choice = .custom
                     }
                 }
@@ -39,7 +41,7 @@ struct RiskSelector: View {
         "\(NSDecimalNumber(decimal: percent).stringValue) %"
     }
 
-    private func chip(_ title: String, selected: Bool, action: @escaping () -> Void) -> some View {
+    private func chip(_ title: String, id: String? = nil, selected: Bool, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Text(title)
                 .font(.subheadline.weight(.medium))
@@ -49,5 +51,6 @@ struct RiskSelector: View {
                 .foregroundStyle(selected ? Color.white : Color.primary)
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier(id ?? title)
     }
 }

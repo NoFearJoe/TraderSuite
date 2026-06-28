@@ -16,7 +16,8 @@ struct LotCalcView: View {
     @State private var specError: String?
     @State private var showingDepositPicker = false
     @State private var selectedDepositID: UUID?
-    @State private var resultExpanded = false
+    // Expanded during demo capture so the card shows loss-at-stop + margin.
+    @State private var resultExpanded = UITestMode.isActive
     @State private var draftLoaded = false
     @FocusState private var entryFocused: Bool
 
@@ -43,8 +44,10 @@ struct LotCalcView: View {
                             .keyboardType(.decimalPad)
                             #endif
                             .focused($entryFocused)
+                            .accessibilityIdentifier("calc.entry")
                     }
-                    DecimalField(String(localized: "field_stop_loss_price"), text: $model.stopText)
+                    DecimalField(String(localized: "field_stop_loss_price"), text: $model.stopText,
+                                 accessibilityID: "calc.stop")
                 }
 
                 Section(String(localized: "field_risk")) {
@@ -80,7 +83,9 @@ struct LotCalcView: View {
         }
         .task { await loadSpec() }
         .task {
-            // Focus the entry field once the push transition settles.
+            // Focus the entry field once the push transition settles. Skipped
+            // during demo capture so the keyboard timing is driven by the test.
+            guard !UITestMode.isActive else { return }
             try? await Task.sleep(for: .milliseconds(400))
             entryFocused = true
         }
@@ -88,7 +93,10 @@ struct LotCalcView: View {
             loadDraft()
             prepareDeposit()
         }
-        .onDisappear(perform: saveDraft)
+        .onDisappear {
+            saveDraft()
+            UITestMode.writeMarker("end") // video: recording stops here
+        }
     }
 
     // MARK: Result card

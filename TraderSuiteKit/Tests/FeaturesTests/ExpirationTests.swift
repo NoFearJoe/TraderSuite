@@ -63,6 +63,22 @@ struct ExpirationNotificationBuilderTests {
         #expect(notifications.map(\.id) == ["expiry-SiM6-L1", "expiry-SiM6-L0"])
     }
 
+    @Test("Fires at 15:00 on the trade date in the user's time zone")
+    func firesAt3pmLocal() {
+        let tz = TimeZone(identifier: "America/New_York")!
+        let contracts = [WatchlistExpiry(family: "Si", symbol: "SiM6", expiration: mskDay(2026, 6, 24))]
+        let notifications = ExpirationNotificationBuilder.build(
+            for: contracts, now: mskDay(2026, 6, 1), leadDays: [0], timeZone: tz
+        )
+        var local = Calendar(identifier: .gregorian)
+        local.timeZone = tz
+        let comps = local.dateComponents([.year, .month, .day, .hour, .minute], from: notifications[0].fireDate)
+        #expect(comps.hour == 15)
+        #expect(comps.minute == 0)
+        // The Moscow last-trade date (June 24) is preserved, not shifted by the tz.
+        #expect(comps.year == 2026 && comps.month == 6 && comps.day == 24)
+    }
+
     @Test("Body text reflects the lead time")
     func bodyText() {
         let contracts = [WatchlistExpiry(family: "Si", symbol: "SiM6", expiration: mskDay(2026, 6, 24))]

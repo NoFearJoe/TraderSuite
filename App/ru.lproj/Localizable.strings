@@ -6,7 +6,7 @@
 "settings_title" = "Настройки";
 "search_futures_prompt" = "Поиск фьючерсов";
 "empty_watchlist_title" = "Список пуст";
-"empty_watchlist_description" = "Чтобы добавить фьючерс в список, воспользуйтесь полем поиска внизу экрана.";
+"empty_watchlist_description" = "Чтобы добавить фьючерс в список, воспользуйтесь полем поиска.";
 "search_empty_prompt" = "Введите название фьючерса или его идентификатор";
 "action_add" = "Добавить";
 "action_roll_over" = "Роллировать";

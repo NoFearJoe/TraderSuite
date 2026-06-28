@@ -6,7 +6,7 @@
 "settings_title" = "Settings";
 "search_futures_prompt" = "Search Futures";
 "empty_watchlist_title" = "Watchlist is Empty";
-"empty_watchlist_description" = "Use the search field at the bottom to add futures to your watchlist.";
+"empty_watchlist_description" = "Use the search field to add futures to your watchlist.";
 "search_empty_prompt" = "Enter a futures name or identifier";
 "action_add" = "Add";
 "action_roll_over" = "Roll Over";
@@ -61,7 +61,7 @@
 "field_entry_price" = "Entry Price";
 "field_stop_loss_price" = "Stop-Loss";
 "field_risk" = "Risk";
-"field_lots_count" = "Lots for a deal";
+"field_lots_count" = "Lots for Deal";
 "field_loss_at_stop" = "Loss at Stop";
 "field_margin_short" = "Margin";
 "warning_margin_limited" = "Size limited by margin";

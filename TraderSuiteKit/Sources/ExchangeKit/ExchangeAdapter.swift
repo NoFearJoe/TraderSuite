@@ -2,7 +2,6 @@ import Foundation
 import Core
 
 public enum ExchangeError: Error, Sendable, Equatable {
-    case notImplemented
     case network(String)
     case decoding(String)
     case instrumentNotFound(String)

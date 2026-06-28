@@ -13,12 +13,24 @@ struct TraderSuiteApp: App {
     @State private var environment: AppEnvironment
 
     init() {
+        // App Store asset capture (UI-test target) boots into a deterministic,
+        // fully-seeded in-memory environment so screenshots/videos are repeatable.
+        if UITestMode.isScreenshots || UITestMode.isVideo {
+            let env = UITestMode.isVideo
+                ? AppEnvironment.makeForVideo()
+                : AppEnvironment.makeForScreenshots()
+            self.container = env.container
+            _environment = State(initialValue: env)
+            return
+        }
+
         let container: ModelContainer
         do {
-            // CloudKit sync is off by default so local ad-hoc builds work.
-            // To enable: add the iCloud→CloudKit capability, then pass
-            // `cloudKit: .automatic` here. See README.
-            container = try PersistenceContainer.make()
+            // iCloud sync is on: the app declares the CloudKit capability and the
+            // `iCloud.com.mesterra.tradersuite` container in TraderSuite.entitlements,
+            // and signs with a Development Team (see project.yml). `.automatic`
+            // resolves that single container from the entitlements.
+            container = try PersistenceContainer.make(cloudKit: .automatic)
         } catch {
             fatalError("Не удалось создать ModelContainer: \(error)")
         }

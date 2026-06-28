@@ -23,7 +23,7 @@ public enum PersistenceContainer {
         /// Sync to the app's default CloudKit container.
         case automatic
         /// Sync to a specific private CloudKit container, e.g.
-        /// `"iCloud.com.ilyakharabet.futurescalc"`.
+        /// `"iCloud.com.mesterra.tradersuite"`.
         case privateDatabase(containerIdentifier: String)
 
         var configuration: ModelConfiguration.CloudKitDatabase {
