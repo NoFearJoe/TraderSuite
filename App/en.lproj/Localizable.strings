@@ -1,0 +1,324 @@
+/* Inline words */
+"inline_lot" = "lot.";
+
+/* HomeView */
+"watchlist_title" = "Watchlist";
+"settings_title" = "Settings";
+"search_futures_prompt" = "Search Futures";
+"empty_watchlist_title" = "Watchlist is Empty";
+"empty_watchlist_description" = "Use the search field at the bottom to add futures to your watchlist.";
+"search_empty_prompt" = "Enter a futures name or identifier";
+"action_add" = "Add";
+"action_roll_over" = "Roll Over";
+
+/* InstrumentInfoView */
+"section_about_contract" = "About";
+"field_identifier" = "Identifier";
+"field_exchange" = "Exchange";
+"field_expiration" = "Expiration";
+"field_notification" = "Notification";
+"notification_status_off" = "Off";
+"section_exchange_data" = "Exchange Data";
+"loading_exchange_data" = "Loading exchange data…";
+"field_price_step" = "Price Step";
+"field_step_value" = "Step Value";
+"field_initial_margin" = "Initial Margin";
+"field_exchange_fee" = "Exchange Fee per Side";
+"error_load_contract_spec" = "Failed to load contract data from the exchange.";
+"action_averaging" = "Averaging";
+"action_position_sizing" = "Position Sizing";
+"action_clear_fields" = "Clear Fields";
+"action_add_to_watchlist" = "Add to Watchlist";
+"action_remove_from_watchlist" = "Remove from Watchlist";
+"instrument_summary_fallback" = "Futures contract %@.";
+
+/* ExpirationNotificationSetupView */
+"notification_setup_title" = "Expiration Notification";
+"notification_when_section" = "When to Remind";
+"notification_time_note" = "Notification will arrive at 9:00 a.m.";
+"action_cancel" = "Cancel";
+"action_save" = "Save";
+"notification_lead_0" = "On Expiration Day";
+"notification_lead_1" = "1 Day Before";
+"notification_lead_2" = "2 Days Before";
+"notification_lead_3" = "3 Days Before";
+"notification_lead_4" = "4 Days Before";
+"notification_lead_5" = "5 Days Before";
+"notification_lead_6" = "6 Days Before";
+"notification_lead_7" = "1 Week Before";
+"notification_lead_n_few" = "%lld Days Before";
+"notification_lead_n_many" = "%lld Days Before";
+"notification_denied_title" = "Notifications Disabled";
+"notification_denied_note" = "Notifications for the app are turned off in system settings. Enable them to receive expiration reminders.";
+"notification_open_settings" = "Open Settings";
+
+/* LotCalcView */
+"lot_calc_title" = "Position Sizing";
+"section_trade" = "Trade";
+"field_trade_type" = "Trade Type";
+"trade_direction_buy" = "Buy";
+"trade_direction_sell" = "Sell";
+"field_entry_price" = "Entry Price";
+"field_stop_loss_price" = "Stop-Loss";
+"field_risk" = "Risk";
+"field_lots_count" = "Lots for a deal";
+"field_loss_at_stop" = "Loss at Stop";
+"field_margin_short" = "Margin";
+"warning_margin_limited" = "Size limited by margin";
+"empty_calc_prompt" = "Fill in trade parameters to calculate";
+
+/* AveragingCalcView */
+"averaging_title" = "Averaging";
+"trade_direction_long" = "Long";
+"trade_direction_short" = "Short";
+"action_add_position" = "Add Position";
+"section_open_positions" = "Open Positions";
+"open_positions_description" = "Entry price and lot count for each open position.";
+"new_position_label" = "New Position";
+"field_stop_loss" = "Stop-Loss";
+"field_common_stop" = "Common Stop for All Positions";
+"field_risk_per_position" = "Risk per Position";
+"field_total_lots" = "Total Lots";
+"field_add_lots" = "Add Lots";
+"field_average_price" = "Average Price";
+"warning_risk_budget_exhausted" = "Risk budget exhausted by open positions";
+"empty_averaging_prompt" = "Fill in positions, stop, and risk to calculate";
+"field_lots" = "Lots";
+"position_label_numbered" = "Position %d";
+
+/* Deposits */
+"deposits_title" = "Deposits";
+"empty_deposits_title" = "No Deposits";
+"empty_deposits_description" = "Add a deposit to calculate positions.";
+"action_add_deposit" = "Add Deposit";
+"deposits_hint" = "Tap a deposit to select it for calculations.";
+"action_edit" = "Edit";
+"edit_deposit_title" = "Edit Deposit";
+"new_deposit_title" = "New Deposit";
+"field_name" = "Name";
+"field_balance_currency" = "Balance (%@)";
+"field_risk_per_trade" = "Risk per Trade, %";
+"action_done" = "Done";
+"error_deposit_invalid" = "Check the deposit amount and risk.";
+"error_deposit_balance_invalid" = "Enter a valid deposit amount.";
+"error_save_deposit_inline" = "Failed to save deposit.";
+"select_deposit_prompt" = "Select Deposit";
+
+/* RiskSelector */
+"risk_custom" = "Custom";
+"field_risk_percent" = "Risk, %";
+
+/* AveragingView standalone */
+"section_parameters" = "Parameters";
+"field_direction" = "Direction";
+"field_risk_per_position_percent" = "Risk per Position, %";
+"field_broker_fee" = "Broker Fee per Side";
+"averaging_profit_hint" = "A profitable position at the common stop frees up risk budget.";
+"field_common_stop_short" = "Common Stop";
+"action_calculate" = "Calculate";
+"section_result" = "Result";
+"field_breakeven" = "Breakeven";
+"field_risk_budget" = "Risk Budget";
+"field_open_positions_risk" = "Risk of Open Positions";
+"field_total_risk_at_stop" = "Total Risk at Stop";
+
+/* SpecInputSection */
+"section_contract" = "Contract";
+"field_symbol" = "Symbol";
+"field_step_price" = "Step Value";
+"field_margin" = "Initial Margin";
+
+/* CalcResultCard */
+"loading_data" = "Loading data…";
+
+/* SettingsView */
+"section_about" = "About";
+"field_version" = "Version";
+"premium_description" = "Extended functionality for experienced traders";
+"section_subscription" = "Subscription";
+"action_subscribe" = "Subscribe";
+"pro_subscription_title" = "TraderSuite PRO";
+"pro_subscription_title_short" = "PRO";
+"no_subscribtion_title" = "Free";
+
+/* Paywall feature list */
+"pro_feature_deposits_title" = "Unlimited Deposits";
+"pro_feature_deposits_desc" = "Create as many deposits as you want on every exchange.";
+"pro_feature_watchlist_title" = "Unlimited Watchlist";
+"pro_feature_watchlist_desc" = "Add any number of futures to your watchlist.";
+"pro_feature_notifications_title" = "Expiration Notifications";
+"pro_feature_notifications_desc" = "Reminders for a contract's last trading day.";
+
+/* WatchlistViewModel errors */
+"error_load_watchlist" = "Failed to load watchlist";
+"error_empty_instrument_code" = "Enter an instrument code (e.g. BR)";
+"error_exchange_unavailable" = "Exchange unavailable";
+"error_add_contract" = "Failed to add contract";
+"error_load_contract" = "Failed to load contract";
+"error_update_contract" = "Failed to update contract";
+"error_remove_watchlist" = "Failed to remove from watchlist";
+"error_reorder_watchlist" = "Failed to reorder the watchlist";
+"error_save_notification" = "Failed to save notification setting";
+"error_load_instruments" = "Failed to load instruments";
+"error_contract_not_found" = "No active contract found for \"%@\"";
+
+/* DepositsViewModel errors */
+"error_load_deposits" = "Failed to load deposits";
+"error_save_deposit" = "Failed to save deposit";
+"error_save_changes" = "Failed to save changes";
+"error_delete_deposit" = "Failed to delete deposit";
+"error_balance_positive" = "Balance must be a positive number";
+"error_risk_range" = "Risk must be between 0 and 100%";
+
+/* LotCalcViewModel errors */
+"error_select_deposit" = "Select a deposit to calculate.";
+"error_enter_risk" = "Enter risk as a percentage.";
+"error_stop_below_entry_long" = "For a long, the stop must be below the entry price.";
+"error_stop_above_entry_short" = "For a short, the stop must be above the entry price.";
+"error_deposit_balance_positive" = "Deposit balance must be positive.";
+"error_invalid_contract_params" = "Invalid contract parameters.";
+"error_calculation_failed" = "Calculation failed.";
+
+/* PositionSizingViewModel errors */
+"error_stop_loss_side" = "Stop-loss must be on the loss side of the entry price";
+
+/* AveragingCalcViewModel / AveragingViewModel errors */
+"error_stop_below_entry_new_long" = "For a long, the stop must be below the new position's entry price.";
+"error_stop_above_entry_new_short" = "For a short, the stop must be above the new position's entry price.";
+"error_check_numbers" = "Check the entered numbers";
+"error_check_contract_params" = "Check the contract parameters";
+"error_common_stop_side" = "The common stop must be on the loss side for the new position";
+"error_deposit_positive" = "Deposit must be positive";
+"error_contract_params_zero" = "Price step, step value, and initial margin must be greater than zero";
+"error_calculation" = "Calculation error";
+"error_check_positions" = "Check entry price and lot count in open positions";
+"error_enter_symbol" = "Enter the contract symbol";
+
+/* InstrumentArtwork names — CME */
+"instrument_sp500" = "E-mini S&P 500";
+"instrument_nasdaq100" = "E-mini Nasdaq-100";
+"instrument_russell2000" = "E-mini Russell 2000";
+"instrument_dow_jones" = "E-mini Dow Jones";
+"instrument_tbond30y" = "T-Bond 30Y";
+"instrument_tnote10y" = "T-Note 10Y";
+"instrument_jpy_usd" = "JPY / USD";
+
+/* InstrumentArtwork descriptions — CME */
+"instrument_sp500_desc" = "E-mini S&P 500 Index futures.";
+"instrument_nasdaq100_desc" = "E-mini Nasdaq-100 Index futures.";
+"instrument_russell2000_desc" = "E-mini Russell 2000 Index futures.";
+"instrument_dow_jones_desc" = "E-mini Dow Jones Industrial Average futures.";
+"instrument_tbond30y_desc" = "US 30-Year Treasury Bond futures.";
+"instrument_tnote10y_desc" = "US 10-Year Treasury Note futures.";
+"instrument_jpy_usd_desc" = "Japanese Yen / USD exchange rate futures.";
+
+/* InstrumentArtwork names — Crypto (CME) */
+"instrument_bitcoin" = "Bitcoin";
+"instrument_ethereum" = "Ethereum";
+
+/* InstrumentArtwork names — MOEX */
+"instrument_brent_oil" = "Brent Crude";
+"instrument_wti_oil" = "WTI Crude";
+"instrument_natural_gas" = "Natural Gas";
+"instrument_gold" = "Gold";
+"instrument_silver" = "Silver";
+"instrument_platinum" = "Platinum";
+"instrument_palladium" = "Palladium";
+"instrument_copper" = "Copper";
+"instrument_usd_rub" = "USD / RUB";
+"instrument_eur_rub" = "EUR / RUB";
+"instrument_eur_usd" = "EUR / USD";
+"instrument_cny_rub" = "CNY / RUB";
+"instrument_gbp_usd" = "GBP / USD";
+"instrument_jpy_rub" = "JPY / RUB";
+"instrument_rts_index" = "RTS Index";
+"instrument_moex_index" = "MOEX Index";
+"instrument_wheat" = "Wheat";
+"instrument_sugar" = "Sugar";
+"instrument_corn" = "Corn";
+
+/* InstrumentArtwork names — Eurex */
+"instrument_eurostoxx50" = "EURO STOXX 50";
+"instrument_dax" = "DAX";
+"instrument_dax_mini" = "Mini-DAX";
+"instrument_bund" = "Euro-Bund (10Y)";
+"instrument_bobl" = "Euro-Bobl (5Y)";
+"instrument_schatz" = "Euro-Schatz (2Y)";
+
+/* InstrumentArtwork descriptions — Eurex */
+"instrument_eurostoxx50_desc" = "EURO STOXX 50 index futures.";
+"instrument_dax_desc" = "DAX index futures (40 largest German companies).";
+"instrument_bund_desc" = "German 10-year government bond (Bund) futures.";
+"instrument_bobl_desc" = "German 5-year government bond (Bobl) futures.";
+"instrument_schatz_desc" = "German 2-year government bond (Schatz) futures.";
+
+/* InstrumentArtwork names — SGX */
+"instrument_china_a50" = "FTSE China A50";
+"instrument_nikkei225" = "Nikkei 225 (USD)";
+"instrument_iron_ore" = "Iron Ore 62% Fe";
+
+/* InstrumentArtwork descriptions — SGX */
+"instrument_china_a50_desc" = "FTSE China A50 index futures (50 largest Chinese companies).";
+"instrument_nikkei225_desc" = "Nikkei 225 index futures (USD denominated).";
+"instrument_iron_ore_desc" = "Iron ore futures, 62% iron content.";
+
+/* InstrumentArtwork descriptions — Crypto (CME) */
+"instrument_bitcoin_desc" = "Bitcoin futures.";
+"instrument_ethereum_desc" = "Ether futures.";
+
+/* InstrumentArtwork descriptions */
+"instrument_brent_oil_desc" = "Brent crude oil futures.";
+"instrument_wti_oil_desc" = "WTI crude oil futures (Light Sweet).";
+"instrument_natural_gas_desc" = "Natural gas futures.";
+"instrument_gold_desc" = "Refined gold futures.";
+"instrument_silver_desc" = "Refined silver futures.";
+"instrument_platinum_desc" = "Platinum futures.";
+"instrument_palladium_desc" = "Palladium futures.";
+"instrument_copper_desc" = "Copper futures.";
+"instrument_usd_rub_desc" = "USD/RUB exchange rate futures.";
+"instrument_eur_rub_desc" = "EUR/RUB exchange rate futures.";
+"instrument_eur_usd_desc" = "EUR/USD exchange rate futures.";
+"instrument_cny_rub_desc" = "CNY/RUB exchange rate futures.";
+"instrument_gbp_usd_desc" = "GBP/USD exchange rate futures.";
+"instrument_jpy_rub_desc" = "JPY/RUB exchange rate futures.";
+"instrument_rts_index_desc" = "RTS Index futures.";
+"instrument_moex_index_desc" = "MOEX Index futures.";
+"instrument_wheat_desc" = "Wheat futures.";
+"instrument_sugar_desc" = "Raw sugar futures.";
+"instrument_corn_desc" = "Corn futures.";
+
+/* ExpirationNotifications */
+"notification_title" = "Contract Expiration";
+"notification_body_today" = "today is the last trading day.";
+"notification_body_tomorrow" = "last trading day is tomorrow.";
+"notification_body_days" = "expires in %lld days.";
+
+/* DepositPicker */
+"section_deposit" = "Deposit";
+"deposit_currency_note" = "Deposit currency is set by the exchange — %@.";
+
+/* SettingsView */
+"action_share_app" = "Share App";
+"action_rate_app" = "Rate App";
+"action_contact_support" = "Contact Support";
+
+/* HomeView — contract group expand/collapse */
+"action_collapse" = "Collapse";
+"action_show_more" = "%d more";
+"accessibility_collapse_contracts" = "Collapse contract list";
+"accessibility_show_more_contracts" = "Show %d more contracts";
+
+/* Onboarding */
+"onboarding_skip" = "Skip";
+"onboarding_next" = "Next";
+"onboarding_start" = "Get Started";
+"onboarding_welcome_title" = "Trade Futures Without Mistakes";
+"onboarding_welcome_desc" = "TraderSuite helps traders with futures trades: it calculates the number of lots for opening a position and for averaging.";
+"onboarding_calc_title" = "Position Sizing";
+"onboarding_calc_desc" = "The calculator picks the number of lots to open a position — based on your deposit size and acceptable risk.";
+"onboarding_averaging_title" = "Averaging a Position";
+"onboarding_averaging_desc" = "The averaging calculator works out how many lots to add to an already open position under a common stop-loss.";
+"onboarding_promo_question" = "Are You an Experienced Trader?";
+"onboarding_promo_subtitle" = "Then you can remove the limits on the app's features by subscribing to the PRO plan.";
+"onboarding_promo_subscribe" = "Subscribe";
+"onboarding_promo_continue" = "Continue for Free";

@@ -1,0 +1,324 @@
+/* Inline words */
+"inline_lot" = "лот.";
+
+/* HomeView */
+"watchlist_title" = "Мои фьючерсы";
+"settings_title" = "Настройки";
+"search_futures_prompt" = "Поиск фьючерсов";
+"empty_watchlist_title" = "Список пуст";
+"empty_watchlist_description" = "Чтобы добавить фьючерс в список, воспользуйтесь полем поиска внизу экрана.";
+"search_empty_prompt" = "Введите название фьючерса или его идентификатор";
+"action_add" = "Добавить";
+"action_roll_over" = "Роллировать";
+
+/* InstrumentInfoView */
+"section_about_contract" = "О контракте";
+"field_identifier" = "Идентификатор";
+"field_exchange" = "Биржа";
+"field_expiration" = "Экспирация";
+"field_notification" = "Уведомление";
+"notification_status_off" = "Выключено";
+"section_exchange_data" = "Данные биржи";
+"loading_exchange_data" = "Загрузка данных биржи…";
+"field_price_step" = "Шаг цены";
+"field_step_value" = "Стоимость шага";
+"field_initial_margin" = "Гар. обеспечение (ГО)";
+"field_exchange_fee" = "Биржевой сбор";
+"error_load_contract_spec" = "Не удалось загрузить данные контракта от биржи.";
+"action_averaging" = "Усреднение позиции";
+"action_position_sizing" = "Расчёт лотов";
+"action_clear_fields" = "Очистить поля";
+"action_add_to_watchlist" = "Добавить в список";
+"action_remove_from_watchlist" = "Удалить из списка наблюдения";
+"instrument_summary_fallback" = "Фьючерсный контракт %@.";
+
+/* ExpirationNotificationSetupView */
+"notification_setup_title" = "Уведомление об экспирации";
+"notification_when_section" = "Когда напомнить";
+"notification_time_note" = "Уведомление придёт в 9:00.";
+"action_cancel" = "Отмена";
+"action_save" = "Сохранить";
+"notification_lead_0" = "В день экспирации";
+"notification_lead_1" = "За 1 день";
+"notification_lead_2" = "За 2 дня";
+"notification_lead_3" = "За 3 дня";
+"notification_lead_4" = "За 4 дня";
+"notification_lead_5" = "За 5 дней";
+"notification_lead_6" = "За 6 дней";
+"notification_lead_7" = "За 1 неделю";
+"notification_lead_n_few" = "За %lld дня";
+"notification_lead_n_many" = "За %lld дней";
+"notification_denied_title" = "Уведомления отключены";
+"notification_denied_note" = "Уведомления для приложения выключены в настройках системы. Включите их, чтобы получать напоминания об экспирации.";
+"notification_open_settings" = "Открыть настройки";
+
+/* LotCalcView */
+"lot_calc_title" = "Расчёт";
+"section_trade" = "Сделка";
+"field_trade_type" = "Тип сделки";
+"trade_direction_buy" = "Покупка";
+"trade_direction_sell" = "Продажа";
+"field_entry_price" = "Цена входа";
+"field_stop_loss_price" = "Стоп-лосс";
+"field_risk" = "Риск";
+"field_lots_count" = "Количество лотов для сделки";
+"field_loss_at_stop" = "Убыток при стоп-лоссе";
+"field_margin_short" = "ГО";
+"warning_margin_limited" = "Размер ограничен маржой";
+"empty_calc_prompt" = "Заполните параметры сделки для расчёта";
+
+/* AveragingCalcView */
+"averaging_title" = "Усреднение";
+"trade_direction_long" = "Лонг";
+"trade_direction_short" = "Шорт";
+"action_add_position" = "Добавить позицию";
+"section_open_positions" = "Открытые позиции";
+"open_positions_description" = "Цена входа и количество лотов по каждой уже открытой позиции.";
+"new_position_label" = "Новая позиция";
+"field_stop_loss" = "Стоп-лосс";
+"field_common_stop" = "Общий стоп на все позиции";
+"field_risk_per_position" = "Риск на позицию";
+"field_total_lots" = "Всего лотов";
+"field_add_lots" = "Добавить лотов";
+"field_average_price" = "Средняя цена";
+"warning_risk_budget_exhausted" = "Бюджет риска уже исчерпан открытыми позициями";
+"empty_averaging_prompt" = "Заполните позиции, стоп и риск для расчёта";
+"field_lots" = "Лоты";
+"position_label_numbered" = "Позиция %d";
+
+/* Deposits */
+"deposits_title" = "Депозиты";
+"empty_deposits_title" = "Нет депозитов";
+"empty_deposits_description" = "Добавьте депозит, чтобы рассчитывать позиции по нему.";
+"action_add_deposit" = "Добавить депозит";
+"deposits_hint" = "Нажмите на депозит, чтобы выбрать его для расчётов.";
+"action_edit" = "Изменить";
+"edit_deposit_title" = "Изменить депозит";
+"new_deposit_title" = "Новый депозит";
+"field_name" = "Название";
+"field_balance_currency" = "Баланс (%@)";
+"field_risk_per_trade" = "Риск на сделку, %";
+"action_done" = "Готово";
+"error_deposit_invalid" = "Проверьте размер и риск депозита.";
+"error_deposit_balance_invalid" = "Введите корректный размер депозита.";
+"error_save_deposit_inline" = "Не удалось сохранить депозит.";
+"select_deposit_prompt" = "Выберите депозит";
+
+/* RiskSelector */
+"risk_custom" = "Свой";
+"field_risk_percent" = "Риск, %";
+
+/* AveragingView standalone */
+"section_parameters" = "Параметры";
+"field_direction" = "Направление";
+"field_risk_per_position_percent" = "Риск на позицию, %";
+"field_broker_fee" = "Комиссия брокера";
+"averaging_profit_hint" = "Позиция в плюсе на общем стопе освобождает бюджет риска.";
+"field_common_stop_short" = "Общий стоп";
+"action_calculate" = "Рассчитать";
+"section_result" = "Результат";
+"field_breakeven" = "Безубыток";
+"field_risk_budget" = "Бюджет риска";
+"field_open_positions_risk" = "Риск открытых позиций";
+"field_total_risk_at_stop" = "Итоговый риск на стопе";
+
+/* SpecInputSection */
+"section_contract" = "Контракт";
+"field_symbol" = "Символ";
+"field_step_price" = "Цена шага";
+"field_margin" = "ГО (маржа)";
+
+/* CalcResultCard */
+"loading_data" = "Загрузка данных…";
+
+/* SettingsView */
+"section_about" = "О приложении";
+"field_version" = "Версия";
+"premium_description" = "Расширенная функциональность для опытных трейдеров";
+"section_subscription" = "Подписка";
+"action_subscribe" = "Подписаться";
+"pro_subscription_title" = "TraderSuite PRO";
+"pro_subscription_title_short" = "PRO";
+"no_subscribtion_title" = "Бесплатная";
+
+/* Paywall feature list */
+"pro_feature_deposits_title" = "Безлимит депозитов";
+"pro_feature_deposits_desc" = "Создавайте сколько угодно депозитов на каждой бирже.";
+"pro_feature_watchlist_title" = "Безлимитный список фьючерсов";
+"pro_feature_watchlist_desc" = "Добавляйте любое количество фьючерсов в список.";
+"pro_feature_notifications_title" = "Уведомления об экспирации";
+"pro_feature_notifications_desc" = "Напоминания о последнем торговом дне контракта.";
+
+/* WatchlistViewModel errors */
+"error_load_watchlist" = "Не удалось загрузить список фьючерсов";
+"error_empty_instrument_code" = "Укажите код инструмента (например, BR)";
+"error_exchange_unavailable" = "Биржа недоступна";
+"error_add_contract" = "Не удалось добавить контракт";
+"error_load_contract" = "Не удалось загрузить контракт";
+"error_update_contract" = "Не удалось обновить контракт";
+"error_remove_watchlist" = "Не удалось удалить из списка наблюдения";
+"error_reorder_watchlist" = "Не удалось изменить порядок списка";
+"error_save_notification" = "Не удалось сохранить настройку уведомления";
+"error_load_instruments" = "Не удалось загрузить список инструментов";
+"error_contract_not_found" = "Активный контракт для «%@» не найден";
+
+/* DepositsViewModel errors */
+"error_load_deposits" = "Не удалось загрузить депозиты";
+"error_save_deposit" = "Не удалось сохранить депозит";
+"error_save_changes" = "Не удалось сохранить изменения";
+"error_delete_deposit" = "Не удалось удалить депозит";
+"error_balance_positive" = "Баланс должен быть положительным числом";
+"error_risk_range" = "Риск должен быть от 0 до 100 %";
+
+/* LotCalcViewModel errors */
+"error_select_deposit" = "Выберите депозит для расчёта.";
+"error_enter_risk" = "Укажите риск в процентах.";
+"error_stop_below_entry_long" = "Для покупки стоп-лосс должен быть ниже цены входа.";
+"error_stop_above_entry_short" = "Для продажи стоп-лосс должен быть выше цены входа.";
+"error_deposit_balance_positive" = "Баланс депозита должен быть положительным.";
+"error_invalid_contract_params" = "Некорректные параметры контракта.";
+"error_calculation_failed" = "Не удалось выполнить расчёт.";
+
+/* PositionSizingViewModel errors */
+"error_stop_loss_side" = "Стоп-лосс должен быть на стороне убытка от цены входа";
+
+/* AveragingCalcViewModel / AveragingViewModel errors */
+"error_stop_below_entry_new_long" = "Для покупки стоп-лосс должен быть ниже цены входа новой позиции.";
+"error_stop_above_entry_new_short" = "Для продажи стоп-лосс должен быть выше цены входа новой позиции.";
+"error_check_numbers" = "Проверьте введённые числа";
+"error_check_contract_params" = "Проверьте параметры контракта";
+"error_common_stop_side" = "Общий стоп должен быть на стороне убытка для новой позиции";
+"error_deposit_positive" = "Депозит должен быть положительным";
+"error_contract_params_zero" = "Шаг цены, цена шага и ГО должны быть больше нуля";
+"error_calculation" = "Ошибка расчёта";
+"error_check_positions" = "Проверьте цену и количество лотов в открытых позициях";
+"error_enter_symbol" = "Укажите символ контракта";
+
+/* InstrumentArtwork names — CME */
+"instrument_sp500" = "E-mini S&P 500";
+"instrument_nasdaq100" = "E-mini Nasdaq-100";
+"instrument_russell2000" = "E-mini Russell 2000";
+"instrument_dow_jones" = "E-mini Dow Jones";
+"instrument_tbond30y" = "T-Bond 30Y";
+"instrument_tnote10y" = "T-Note 10Y";
+"instrument_jpy_usd" = "Иена / доллар";
+
+/* InstrumentArtwork descriptions — CME */
+"instrument_sp500_desc" = "Фьючерс на индекс S&P 500 (E-mini).";
+"instrument_nasdaq100_desc" = "Фьючерс на индекс Nasdaq-100 (E-mini).";
+"instrument_russell2000_desc" = "Фьючерс на индекс Russell 2000 (E-mini).";
+"instrument_dow_jones_desc" = "Фьючерс на индекс Dow Jones Industrial Average (E-mini).";
+"instrument_tbond30y_desc" = "Фьючерс на 30-летние казначейские облигации США.";
+"instrument_tnote10y_desc" = "Фьючерс на 10-летние казначейские ноты США.";
+"instrument_jpy_usd_desc" = "Фьючерс на курс японской иены к доллару США.";
+
+/* InstrumentArtwork names — Crypto (CME) */
+"instrument_bitcoin" = "Биткоин";
+"instrument_ethereum" = "Эфириум";
+
+/* InstrumentArtwork names — MOEX */
+"instrument_brent_oil" = "Нефть Brent";
+"instrument_wti_oil" = "Нефть WTI";
+"instrument_natural_gas" = "Природный газ";
+"instrument_gold" = "Золото";
+"instrument_silver" = "Серебро";
+"instrument_platinum" = "Платина";
+"instrument_palladium" = "Палладий";
+"instrument_copper" = "Медь";
+"instrument_usd_rub" = "Доллар / рубль";
+"instrument_eur_rub" = "Евро / рубль";
+"instrument_eur_usd" = "Евро / доллар";
+"instrument_cny_rub" = "Юань / рубль";
+"instrument_gbp_usd" = "Фунт / доллар";
+"instrument_jpy_rub" = "Иена / рубль";
+"instrument_rts_index" = "Индекс РТС";
+"instrument_moex_index" = "Индекс МосБиржи";
+"instrument_wheat" = "Пшеница";
+"instrument_sugar" = "Сахар";
+"instrument_corn" = "Кукуруза";
+
+/* InstrumentArtwork names — Eurex */
+"instrument_eurostoxx50" = "EURO STOXX 50";
+"instrument_dax" = "DAX";
+"instrument_dax_mini" = "Mini-DAX";
+"instrument_bund" = "Euro-Bund (10 лет)";
+"instrument_bobl" = "Euro-Bobl (5 лет)";
+"instrument_schatz" = "Euro-Schatz (2 года)";
+
+/* InstrumentArtwork descriptions — Eurex */
+"instrument_eurostoxx50_desc" = "Фьючерс на индекс EURO STOXX 50.";
+"instrument_dax_desc" = "Фьючерс на индекс DAX (40 крупнейших компаний Германии).";
+"instrument_bund_desc" = "Фьючерс на 10-летние гособлигации Германии (Bund).";
+"instrument_bobl_desc" = "Фьючерс на 5-летние гособлигации Германии (Bobl).";
+"instrument_schatz_desc" = "Фьючерс на 2-летние гособлигации Германии (Schatz).";
+
+/* InstrumentArtwork names — SGX */
+"instrument_china_a50" = "FTSE China A50";
+"instrument_nikkei225" = "Nikkei 225 (USD)";
+"instrument_iron_ore" = "Железная руда 62% Fe";
+
+/* InstrumentArtwork descriptions — SGX */
+"instrument_china_a50_desc" = "Фьючерс на индекс FTSE China A50 (50 крупнейших компаний Китая).";
+"instrument_nikkei225_desc" = "Фьючерс на индекс Nikkei 225 (в долларах США).";
+"instrument_iron_ore_desc" = "Фьючерс на железную руду с содержанием железа 62%.";
+
+/* InstrumentArtwork descriptions — Crypto (CME) */
+"instrument_bitcoin_desc" = "Фьючерс на биткоин.";
+"instrument_ethereum_desc" = "Фьючерс на эфириум.";
+
+/* InstrumentArtwork descriptions */
+"instrument_brent_oil_desc" = "Фьючерс на нефть марки Brent.";
+"instrument_wti_oil_desc" = "Фьючерс на нефть марки WTI (Light Sweet).";
+"instrument_natural_gas_desc" = "Фьючерс на природный газ.";
+"instrument_gold_desc" = "Фьючерс на аффинированное золото.";
+"instrument_silver_desc" = "Фьючерс на аффинированное серебро.";
+"instrument_platinum_desc" = "Фьючерс на платину.";
+"instrument_palladium_desc" = "Фьючерс на палладий.";
+"instrument_copper_desc" = "Фьючерс на медь.";
+"instrument_usd_rub_desc" = "Фьючерс на курс доллара США к рублю.";
+"instrument_eur_rub_desc" = "Фьючерс на курс евро к рублю.";
+"instrument_eur_usd_desc" = "Фьючерс на курс евро к доллару США.";
+"instrument_cny_rub_desc" = "Фьючерс на курс китайского юаня к рублю.";
+"instrument_gbp_usd_desc" = "Фьючерс на курс фунта стерлингов к доллару США.";
+"instrument_jpy_rub_desc" = "Фьючерс на курс японской иены к рублю.";
+"instrument_rts_index_desc" = "Фьючерс на индекс РТС.";
+"instrument_moex_index_desc" = "Фьючерс на индекс МосБиржи.";
+"instrument_wheat_desc" = "Фьючерс на пшеницу.";
+"instrument_sugar_desc" = "Фьючерс на сахар-сырец.";
+"instrument_corn_desc" = "Фьючерс на кукурузу.";
+
+/* ExpirationNotifications */
+"notification_title" = "Экспирация контракта";
+"notification_body_today" = "сегодня последний торговый день.";
+"notification_body_tomorrow" = "последний торговый день завтра.";
+"notification_body_days" = "экспирация через %lld дн.";
+
+/* DepositPicker */
+"section_deposit" = "Депозит";
+"deposit_currency_note" = "Валюта депозита определяется биржей — %@.";
+
+/* SettingsView */
+"action_share_app" = "Поделиться приложением";
+"action_rate_app" = "Оценить приложение";
+"action_contact_support" = "Написать в поддержку";
+
+/* HomeView — contract group expand/collapse */
+"action_collapse" = "Свернуть";
+"action_show_more" = "Ещё %d";
+"accessibility_collapse_contracts" = "Свернуть список контрактов";
+"accessibility_show_more_contracts" = "Показать ещё %d контрактов";
+
+/* Onboarding */
+"onboarding_skip" = "Пропустить";
+"onboarding_next" = "Далее";
+"onboarding_start" = "Начать";
+"onboarding_welcome_title" = "Сделки по фьючерсам без ошибок";
+"onboarding_welcome_desc" = "TraderSuite помогает трейдерам со сделками по фьючерсам: рассчитывает количество лотов для открытия позиции и для усреднения.";
+"onboarding_calc_title" = "Расчёт позиции";
+"onboarding_calc_desc" = "Калькулятор подбирает количество лотов для открытия позиции — в зависимости от размера депозита и допустимого риска.";
+"onboarding_averaging_title" = "Усреднение позиции";
+"onboarding_averaging_desc" = "Калькулятор усреднения считает, сколько лотов добавить к уже открытой позиции при общем стоп-лоссе.";
+"onboarding_promo_question" = "Вы опытный трейдер?";
+"onboarding_promo_subtitle" = "Тогда вы можете убрать лимиты на функции приложения, оформив подписку.";
+"onboarding_promo_subscribe" = "Оформить подписку";
+"onboarding_promo_continue" = "Продолжить бесплатно";

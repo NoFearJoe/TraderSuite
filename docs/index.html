@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TraderSuite — Support</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f5f5f7;
+    --text: #1d1d1f;
+    --muted: #6e6e73;
+    --accent: #0071e3;
+    --border: #e3e3e6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000;
+      --surface: #1c1c1e;
+      --text: #f5f5f7;
+      --muted: #98989d;
+      --accent: #2997ff;
+      --border: #2c2c2e;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  h1 { font-size: 2rem; margin: 0; letter-spacing: -0.02em; }
+  h2 { font-size: 1.3rem; margin: 40px 0 8px; letter-spacing: -0.01em; }
+  p, li { color: var(--text); }
+  .lead { color: var(--muted); font-size: 1.1rem; margin-top: 8px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-top: 14px;
+  }
+  .card h3 { margin: 0 0 6px; font-size: 1.05rem; }
+  .card p { margin: 0; color: var(--muted); }
+  .contact { display: inline-block; margin-top: 8px; font-size: 1.1rem; font-weight: 600; }
+  .lang-toggle { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--border); border-radius: 980px; padding: 4px; }
+  .lang-toggle button {
+    border: 0; background: transparent; color: var(--muted);
+    font-size: 0.9rem; font-weight: 600; padding: 6px 14px; border-radius: 980px; cursor: pointer;
+  }
+  .lang-toggle button.active { background: var(--accent); color: #fff; }
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+  [data-lang] { display: none; }
+  [data-lang].show { display: block; }
+  .disclaimer { font-size: 0.95rem; color: var(--muted); border-left: 3px solid var(--border); padding-left: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>TraderSuite</h1>
+    <div class="lang-toggle">
+      <button id="btn-ru" class="active" onclick="setLang('ru')">RU</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </header>
+
+  <!-- ====================== RU ====================== -->
+  <div data-lang="ru" class="show">
+    <p class="lead">Поддержка приложения — калькулятор риска и размера позиции для трейдеров фьючерсов.</p>
+
+    <h2>Связаться с нами</h2>
+    <p>По любым вопросам, предложениям и проблемам напишите на почту — мы отвечаем в течение пары рабочих дней.</p>
+    <a class="contact" href="mailto:tradersuite.support@gmail.com">tradersuite.support@gmail.com</a>
+
+    <h2>Частые вопросы</h2>
+
+    <div class="card">
+      <h3>Как приложение считает размер позиции?</h3>
+      <p>По вашему депозиту, допустимому риску в процентах и расстоянию от цены входа до стоп-лосса. Приложение показывает, сколько лотов открыть, какой будет убыток на стопе и хватит ли гарантийного обеспечения (маржи).</p>
+    </div>
+
+    <div class="card">
+      <h3>Какие биржи поддерживаются?</h3>
+      <p>MOEX, CME, Eurex и SGX. Данные по контрактам MOEX подгружаются с биржи; по остальным биржам спецификации берутся из встроенного каталога и периодически обновляются вместе с приложением.</p>
+    </div>
+
+    <div class="card">
+      <h3>Что даёт подписка PRO?</h3>
+      <p>Безлимит депозитов, безлимитный список фьючерсов и уведомления об экспирации контрактов. Подписка оформляется и управляется через ваш Apple ID в Настройках устройства.</p>
+    </div>
+
+    <div class="card">
+      <h3>Я оплатил подписку на другом устройстве — как восстановить?</h3>
+      <p>На экране подписки нажмите «Восстановить покупки». Покупки привязаны к вашему Apple ID, поэтому доступны на всех ваших устройствах с тем же аккаунтом.</p>
+    </div>
+
+    <div class="card">
+      <h3>Как работают напоминания об экспирации?</h3>
+      <p>Для отслеживаемого контракта можно включить локальное уведомление за выбранное число дней до последнего торгового дня. После экспирации приложение автоматически переносит инструмент на следующий контракт.</p>
+    </div>
+
+    <div class="card">
+      <h3>Это инвестиционные советы?</h3>
+      <p>Нет. TraderSuite не даёт торговых сигналов и не торгует за вас. Это инструмент для расчёта риска и размера позиции — решения вы принимаете сами.</p>
+    </div>
+
+    <h2>Конфиденциальность</h2>
+    <p class="disclaimer">
+      TraderSuite не требует регистрации и не собирает персональные данные. Ваши депозиты, список фьючерсов и настройки хранятся на устройстве (и в вашем личном iCloud, если включена синхронизация). Покупки обрабатывает Apple через App Store — мы не получаем данные вашей карты. Приложение обращается к публичным API бирж только для получения данных по контрактам. Сторонняя аналитика и рекламные трекеры не используются.
+    </p>
+
+    <footer>
+      <p>TraderSuite · Обновлено: июнь 2026</p>
+    </footer>
+  </div>
+
+  <!-- ====================== EN ====================== -->
+  <div data-lang="en">
+    <p class="lead">Support for the app — a risk and position-size calculator for futures traders.</p>
+
+    <h2>Contact us</h2>
+    <p>For any questions, suggestions, or issues, email us — we usually reply within a couple of business days.</p>
+    <a class="contact" href="mailto:tradersuite.support@gmail.com">tradersuite.support@gmail.com</a>
+
+    <h2>Frequently asked questions</h2>
+
+    <div class="card">
+      <h3>How does the app calculate position size?</h3>
+      <p>From your deposit, your accepted risk percentage, and the distance from entry to stop-loss. The app shows how many lots to open, your loss at the stop, and whether your margin is sufficient.</p>
+    </div>
+
+    <div class="card">
+      <h3>Which exchanges are supported?</h3>
+      <p>MOEX, CME, Eurex, and SGX. MOEX contract data is fetched live from the exchange; for the others, specifications come from a built-in catalogue that is updated with app releases.</p>
+    </div>
+
+    <div class="card">
+      <h3>What does the PRO subscription include?</h3>
+      <p>Unlimited deposits, an unlimited watchlist, and contract-expiration notifications. The subscription is purchased and managed through your Apple ID in your device Settings.</p>
+    </div>
+
+    <div class="card">
+      <h3>I subscribed on another device — how do I restore it?</h3>
+      <p>On the subscription screen, tap "Restore Purchases." Purchases are tied to your Apple ID, so they're available on all your devices signed in with the same account.</p>
+    </div>
+
+    <div class="card">
+      <h3>How do expiration reminders work?</h3>
+      <p>For a tracked contract you can enable a local notification a chosen number of days before its last trading day. After expiration the app automatically rolls the instrument forward to the next contract.</p>
+    </div>
+
+    <div class="card">
+      <h3>Is this investment advice?</h3>
+      <p>No. TraderSuite doesn't provide trading signals and doesn't trade for you. It's a tool for calculating risk and position size — all decisions are your own.</p>
+    </div>
+
+    <h2>Privacy</h2>
+    <p class="disclaimer">
+      TraderSuite requires no account and collects no personal data. Your deposits, watchlist, and settings are stored on your device (and in your personal iCloud if sync is enabled). Purchases are handled by Apple through the App Store — we never receive your card details. The app contacts public exchange APIs only to retrieve contract data. No third-party analytics or advertising trackers are used.
+    </p>
+
+    <footer>
+      <p>TraderSuite · Last updated: June 2026</p>
+    </footer>
+  </div>
+
+</div>
+
+<script>
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-lang]').forEach(function (el) {
+      el.classList.toggle('show', el.getAttribute('data-lang') === lang);
+    });
+    document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  }
+  // Default to the browser language when it is English.
+  if ((navigator.language || '').slice(0, 2).toLowerCase() === 'en') setLang('en');
+</script>
+</body>
+</html>
