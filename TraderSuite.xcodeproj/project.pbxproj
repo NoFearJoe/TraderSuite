@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09D78EFDD53CF4624923DB15 /* AppMetricaCore in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = C94648A8414C621497EFE0F8 /* AppMetricaCore */; };
 		1F9540707D7E407E1E1196C7 /* PreviewVideoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25110CC961A441485B7C1EE /* PreviewVideoUITests.swift */; };
 		24F652F5732F6BFED0F6AF99 /* FuturesCalcApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD605BBF983E6580CBD1984 /* FuturesCalcApp.swift */; };
 		5F8E75D70356E4D3D4C859B0 /* TraderSuite.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 1AB9047C1BED30F9DE327CE0 /* TraderSuite.storekit */; };
 		600C5E6FE9F5FBF628ADA318 /* Features in Frameworks */ = {isa = PBXBuildFile; productRef = C3BC3BD196E3AB8E3972F38A /* Features */; };
 		93880B90AC336B914018B781 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 518917C923354E42F327D924 /* Assets.xcassets */; };
+		A70748727A528BDA4AFA993A /* AppMetricaAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CBAD9AA6883B0A906A40CB /* AppMetricaAnalytics.swift */; };
 		BBF8288FCCC42734EC88EFE6 /* ScreenshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB7B8358E0C591FF6771F64 /* ScreenshotUITests.swift */; };
 		E8EA06164895BB909E1F6401 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 23D434463C88567ECBFE485B /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -28,16 +30,17 @@
 
 /* Begin PBXFileReference section */
 		091BD528B018D09CA59D40F4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		09CEA0E00635F73466AE24C6 /* TraderSuiteKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = TraderSuiteKit; path = TraderSuiteKit; sourceTree = SOURCE_ROOT; };
+		09CEA0E00635F73466AE24C6 /* TraderSuiteKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TraderSuiteKit; sourceTree = SOURCE_ROOT; };
 		137180C2D89F3BF45349C261 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		1AB9047C1BED30F9DE327CE0 /* TraderSuite.storekit */ = {isa = PBXFileReference; path = TraderSuite.storekit; sourceTree = "<group>"; };
+		1AB9047C1BED30F9DE327CE0 /* TraderSuite.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = TraderSuite.storekit; sourceTree = "<group>"; };
 		2DD605BBF983E6580CBD1984 /* FuturesCalcApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuturesCalcApp.swift; sourceTree = "<group>"; };
 		3B32DB413F8D9B9BE8DA062D /* TraderSuiteUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = TraderSuiteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		518917C923354E42F327D924 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CB7B8358E0C591FF6771F64 /* ScreenshotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotUITests.swift; sourceTree = "<group>"; };
-		8EECF98A102CA3E2E3BFBB52 /* TraderSuite.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TraderSuite.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EECF98A102CA3E2E3BFBB52 /* TraderSuite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TraderSuite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B032B344D9DA8659C28AC020 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D25110CC961A441485B7C1EE /* PreviewVideoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewVideoUITests.swift; sourceTree = "<group>"; };
+		F1CBAD9AA6883B0A906A40CB /* AppMetricaAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMetricaAnalytics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +49,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				600C5E6FE9F5FBF628ADA318 /* Features in Frameworks */,
+				09D78EFDD53CF4624923DB15 /* AppMetricaCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +85,7 @@
 		FD2642BA972B51620CBA2F8B /* App */ = {
 			isa = PBXGroup;
 			children = (
+				F1CBAD9AA6883B0A906A40CB /* AppMetricaAnalytics.swift */,
 				518917C923354E42F327D924 /* Assets.xcassets */,
 				2DD605BBF983E6580CBD1984 /* FuturesCalcApp.swift */,
 				137180C2D89F3BF45349C261 /* Info.plist */,
@@ -136,6 +141,7 @@
 			name = TraderSuite;
 			packageProductDependencies = (
 				C3BC3BD196E3AB8E3972F38A /* Features */,
+				C94648A8414C621497EFE0F8 /* AppMetricaCore */,
 			);
 			productName = TraderSuite;
 			productReference = 8EECF98A102CA3E2E3BFBB52 /* TraderSuite.app */;
@@ -171,6 +177,7 @@
 			mainGroup = FE0C1BB878344A637693ABE4;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				0A6E2578E55CBC9CE74F13AE /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */,
 				ECFAC718549D8B7BE39F92BD /* XCLocalSwiftPackageReference "TraderSuiteKit" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -202,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A70748727A528BDA4AFA993A /* AppMetricaAnalytics.swift in Sources */,
 				24F652F5732F6BFED0F6AF99 /* FuturesCalcApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,7 +263,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = TraderSuite;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -267,7 +276,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -290,7 +299,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = TraderSuite;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +312,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -520,10 +530,26 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		0A6E2578E55CBC9CE74F13AE /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/appmetrica/appmetrica-sdk-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		C3BC3BD196E3AB8E3972F38A /* Features */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Features;
+		};
+		C94648A8414C621497EFE0F8 /* AppMetricaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A6E2578E55CBC9CE74F13AE /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */;
+			productName = AppMetricaCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

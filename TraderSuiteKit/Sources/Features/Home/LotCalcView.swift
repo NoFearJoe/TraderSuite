@@ -89,14 +89,47 @@ struct LotCalcView: View {
             try? await Task.sleep(for: .milliseconds(400))
             entryFocused = true
         }
+        .trackScreen(.lotCalc)
+        .onChange(of: model.riskChoice) { _, _ in trackRiskSelected() }
         .onAppear {
             loadDraft()
             prepareDeposit()
         }
         .onDisappear {
+            trackResult()
             saveDraft()
             UITestMode.writeMarker("end") // video: recording stops here
         }
+    }
+
+    // MARK: Analytics
+
+    private func trackRiskSelected() {
+        var params: [AnalyticsProperty: String] = [
+            .screen: AnalyticsScreen.lotCalc.rawValue,
+            .exchange: detail.exchange.rawValue,
+            .isPreset: { if case .preset = model.riskChoice { return "true" } else { return "false" } }(),
+        ]
+        if let whole = model.riskWholePercent {
+            params[.riskPercent] = NSDecimalNumber(decimal: whole).stringValue
+        }
+        env.analytics.log(.riskSelected, params)
+    }
+
+    /// Report the final, valid sizing result once, as the screen is dismissed —
+    /// avoids an event per keystroke while still capturing whether the user got one.
+    private func trackResult() {
+        guard let result else { return }
+        var params: [AnalyticsProperty: String] = [
+            .exchange: detail.exchange.rawValue,
+            .symbol: detail.symbol,
+            .lots: String(result.lots),
+            .limitedByMargin: result.limitedByMargin ? "true" : "false",
+        ]
+        if let whole = model.riskWholePercent {
+            params[.riskPercent] = NSDecimalNumber(decimal: whole).stringValue
+        }
+        env.analytics.log(.positionCalculated, params)
     }
 
     // MARK: Result card
@@ -105,9 +138,9 @@ struct LotCalcView: View {
         CalcResultCard(state: cardState, expanded: $resultExpanded) {
             if let result {
                 HStack {
-                    Text("field_lots_count").foregroundStyle(.secondary)
+                    Text("field_lots_count").font(.title3).foregroundStyle(.secondary)
                     Spacer()
-                    Text("\(result.lots)").font(.title2.weight(.bold))
+                    Text("\(result.lots)").font(.title.weight(.bold))
                 }
             }
         } detail: {

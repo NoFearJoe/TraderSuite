@@ -92,11 +92,40 @@ struct AveragingCalcView: View {
             }
         }
         .task { await loadSpec() }
+        .trackScreen(.averaging)
+        .onChange(of: model.riskChoice) { _, _ in trackRiskSelected() }
         .onAppear {
             loadDraft()
             prepareDeposit()
         }
-        .onDisappear(perform: saveDraft)
+        .onDisappear {
+            trackResult()
+            saveDraft()
+        }
+    }
+
+    // MARK: Analytics
+
+    private func trackRiskSelected() {
+        var params: [AnalyticsProperty: String] = [
+            .screen: AnalyticsScreen.averaging.rawValue,
+            .exchange: detail.exchange.rawValue,
+            .isPreset: { if case .preset = model.riskChoice { return "true" } else { return "false" } }(),
+        ]
+        if let whole = model.riskWholePercent {
+            params[.riskPercent] = NSDecimalNumber(decimal: whole).stringValue
+        }
+        env.analytics.log(.riskSelected, params)
+    }
+
+    /// Report the final averaging result once, as the screen is dismissed.
+    private func trackResult() {
+        guard let result else { return }
+        env.analytics.log(.averagingCalculated, [
+            .exchange: detail.exchange.rawValue,
+            .symbol: detail.symbol,
+            .lots: String(result.totalLots),
+        ])
     }
 
     // MARK: Position rows
@@ -120,9 +149,9 @@ struct AveragingCalcView: View {
         CalcResultCard(state: cardState, expanded: $resultExpanded) {
             if let result {
                 HStack {
-                    Text("field_total_lots").foregroundStyle(.secondary)
+                    Text("field_total_lots").font(.title3).foregroundStyle(.secondary)
                     Spacer()
-                    Text("\(result.totalLots)").font(.title2.weight(.bold))
+                    Text("\(result.totalLots)").font(.title.weight(.bold))
                 }
             }
         } detail: {

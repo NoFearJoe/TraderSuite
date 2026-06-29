@@ -58,10 +58,12 @@ struct HomeView: View {
             .onChange(of: query) { _, newValue in
                 Task { await model?.search(newValue, exchange: env.selectedExchange) }
             }
-            .onChange(of: env.selectedExchange) { _, _ in
+            .onChange(of: env.selectedExchange) { _, newValue in
+                env.analytics.log(.exchangeSelected, [.exchange: newValue.rawValue])
                 Task { await model?.search(query, exchange: env.selectedExchange) }
             }
         }
+        .trackScreen(.home)
         .task { await start() }
         .task { await env.subscriptions.start() }
         .onAppear { UITestMode.writeMarker("start") } // video: recording begins here
@@ -80,7 +82,10 @@ struct HomeView: View {
         guard let model else { return }
         // Notification permission is requested lazily when the user opens the
         // expiration-reminder setup screen, not at launch.
-        _ = await model.rolloverExpired()
+        let rolled = await model.rolloverExpired()
+        if rolled > 0 {
+            env.analytics.log(.contractRolledOver, [.count: String(rolled)])
+        }
         await model.syncReminders()
     }
 
@@ -128,6 +133,7 @@ enum HomeRoute: Hashable {
 /// only published to descendants of the `.searchable` container.
 private struct HomeContent: View {
     @Environment(\.isSearching) private var isSearchActive
+    @Environment(AppEnvironment.self) private var env
     let model: WatchlistViewModel
     let query: String
     let exchange: ExchangeID
@@ -177,10 +183,15 @@ private struct HomeContent: View {
                 }
                 .onMove { source, destination in
                     model.move(items, from: source, to: destination)
+                    env.analytics.log(.watchlistReordered, [.exchange: exchange.rawValue])
                 }
                 .onDelete { offsets in
                     for index in offsets where items.indices.contains(index) {
-                        model.remove(items[index])
+                        let removed = items[index]
+                        env.analytics.log(.instrumentRemoved, [
+                            .exchange: exchange.rawValue, .symbol: removed.activeSymbol,
+                        ])
+                        model.remove(removed)
                     }
                 }
             }
@@ -417,7 +428,7 @@ private struct SearchResultsList: View {
                             ForEach(visibleContracts(group), id: \.symbol) { contract in
                                 Button { add(contract) } label: { contractRow(contract) }
                                     .buttonStyle(.plain)
-                                    .proGated(isFavLimitReached)
+                                    .proGated(isFavLimitReached, feature: .watchlist)
                                     .accessibilityIdentifier("searchResult.\(contract.symbol)")
                             }
                         } header: {
@@ -503,6 +514,12 @@ private struct SearchResultsList: View {
     private func add(_ contract: InstrumentSummary) {
         Task {
             if await model.addWatchlist(contract: contract, exchange: exchange) {
+                env.analytics.log(.instrumentAdded, [
+                    .exchange: exchange.rawValue,
+                    .family: contract.family,
+                    .symbol: contract.symbol,
+                    .source: AnalyticsSource.search.rawValue,
+                ])
                 onAdded()
                 dismissSearch()
             }

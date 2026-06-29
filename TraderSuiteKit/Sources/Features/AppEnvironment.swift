@@ -24,6 +24,8 @@ public final class AppEnvironment {
     public let specProvider: SpecProvider
     public let registry: ExchangeRegistry
     public let notificationScheduler: NotificationScheduling
+    /// Usage analytics seam (AppMetrica in the app; no-op in tests/previews).
+    public let analytics: AnalyticsReporting
 
     /// Live subscription entitlement, backed by StoreKit 2 transactions.
     public let subscriptions = SubscriptionStore()
@@ -81,7 +83,8 @@ public final class AppEnvironment {
     public init(
         container: ModelContainer,
         registry: ExchangeRegistry,
-        notificationScheduler: NotificationScheduling = UserNotificationScheduler()
+        notificationScheduler: NotificationScheduling = UserNotificationScheduler(),
+        analytics: AnalyticsReporting = NoopAnalytics()
     ) {
         self.container = container
         let context = container.mainContext
@@ -93,6 +96,7 @@ public final class AppEnvironment {
         self.specProvider = SpecProvider(cache: cache, registry: registry)
         self.registry = registry
         self.notificationScheduler = notificationScheduler
+        self.analytics = analytics
 
         // On first launch (no saved value) the default exchange follows the
         // device region: MOEX for Russia, CME everywhere else.

@@ -30,9 +30,10 @@ struct DepositsListView: View {
                 } label: {
                     Label(String(localized: "action_add_deposit"), systemImage: "plus")
                 }
-                .proGated(isDepositLimitReached)
+                .proGated(isDepositLimitReached, feature: .deposits)
             }
         }
+        .trackScreen(.deposits)
         .task { if model == nil { model = DepositsViewModel(store: env.deposits) } }
     }
 
@@ -57,6 +58,7 @@ struct DepositsListView: View {
                 }
                 .onDelete { offsets in
                     model.delete(at: offsets)
+                    env.analytics.log(.depositDeleted, [.exchange: env.selectedExchange.rawValue])
                     reconcileSelection(model)
                 }
             }
@@ -82,6 +84,7 @@ struct DepositsListView: View {
         guard let model,
               model.addDeposit(name: name, exchange: exchange, balanceText: balance, riskPercentText: "2") != nil
         else { return false }
+        env.analytics.log(.depositCreated, [.exchange: exchange.rawValue])
         return true
     }
 

@@ -9,7 +9,10 @@ enum SubscriptionLimit {
 /// Intercepts taps with the paywall when `isBlocked` is true. When false the
 /// modifier is a no-op.
 struct ProGateModifier: ViewModifier {
+    @Environment(AppEnvironment.self) private var env
     let isBlocked: Bool
+    /// Which free-tier cap this gate guards — reported on `paywall_blocked`.
+    let feature: AnalyticsFeature
     @State private var showPaywall = false
 
     func body(content: Content) -> some View {
@@ -23,18 +26,25 @@ struct ProGateModifier: ViewModifier {
             .allowsHitTesting(!isBlocked)
             .overlay {
                 if isBlocked {
-                    Button { showPaywall = true } label: {
+                    Button {
+                        env.analytics.log(.paywallBlocked, [.feature: feature.rawValue])
+                        showPaywall = true
+                    } label: {
                         Color.clear.contentShape(Rectangle())
                     }
                 }
             }
-            .sheet(isPresented: $showPaywall) { SubscriptionView() }
+            .sheet(isPresented: $showPaywall) {
+                SubscriptionView()
+                    .onAppear { env.analytics.log(.paywallShown, [.source: AnalyticsSource.proGate.rawValue]) }
+            }
     }
 }
 
 extension View {
     /// Intercepts taps and presents the subscription paywall when `isBlocked` is true.
-    func proGated(_ isBlocked: Bool) -> some View {
-        modifier(ProGateModifier(isBlocked: isBlocked))
+    /// - Parameter feature: the free-tier cap being guarded, for `paywall_blocked` analytics.
+    func proGated(_ isBlocked: Bool, feature: AnalyticsFeature) -> some View {
+        modifier(ProGateModifier(isBlocked: isBlocked, feature: feature))
     }
 }

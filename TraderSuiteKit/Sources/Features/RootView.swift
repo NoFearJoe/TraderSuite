@@ -7,6 +7,7 @@ import SwiftUI
 /// On first launch it presents the `OnboardingView` tutorial over the home
 /// screen, gated by a persisted flag so it only appears once.
 public struct RootView: View {
+    @Environment(AppEnvironment.self) private var env
     /// Persisted across launches: becomes `true` once the tutorial is finished
     /// or skipped, so onboarding shows exactly once.
     @AppStorage("onboarding.completed") private var onboardingCompleted = false
@@ -20,6 +21,7 @@ public struct RootView: View {
             .onboardingCover(isPresented: $showOnboarding) {
                 onboardingCompleted = true
                 showOnboarding = false
+                env.analytics.log(.onboardingCompleted)
             }
     }
 }

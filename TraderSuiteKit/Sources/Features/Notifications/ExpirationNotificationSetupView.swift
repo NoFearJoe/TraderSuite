@@ -17,6 +17,7 @@ struct ExpirationNotificationSetupView: View {
     let detail: InstrumentDetail
     let model: WatchlistViewModel
 
+    @Environment(AppEnvironment.self) private var env
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openURL) private var openURL
     @State private var isEnabled = false
@@ -77,6 +78,7 @@ struct ExpirationNotificationSetupView: View {
                 }
             }
         }
+        .trackScreen(.notificationSetup)
         .onAppear(perform: loadCurrent)
         .task { await refreshAuthorization() }
         #if os(iOS)
@@ -150,6 +152,11 @@ struct ExpirationNotificationSetupView: View {
         guard let fav = watchlist else { dismiss(); return }
         isSaving = true
         await model.setNotification(for: fav, enabled: isEnabled, leadDays: leadDays)
+        env.analytics.log(.notificationConfigured, [
+            .exchange: detail.exchange.rawValue,
+            .enabled: isEnabled ? "true" : "false",
+            .leadDays: String(leadDays),
+        ])
         isSaving = false
         dismiss()
     }

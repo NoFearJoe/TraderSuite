@@ -12,6 +12,12 @@ options:
 packages:
   TraderSuiteKit:
     path: TraderSuiteKit
+  # AppMetrica analytics SDK. iOS/tvOS only — linked for iOS below and guarded
+  # with `#if canImport(AppMetricaCore)` in App/AppMetricaAnalytics.swift so the
+  # macOS build stays unaffected.
+  AppMetrica:
+    url: https://github.com/appmetrica/appmetrica-sdk-ios
+    from: "6.0.0"
 
 targets:
   TraderSuite:
@@ -22,6 +28,9 @@ targets:
     dependencies:
       - package: TraderSuiteKit
         product: Features
+      - package: AppMetrica
+        product: AppMetricaCore
+        destinationFilters: [iOS]
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.mesterra.tradersuite

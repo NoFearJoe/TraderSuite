@@ -96,7 +96,7 @@ struct InstrumentInfoView: View {
                 Button(action: toggleWatchlist) {
                     Image(systemName: isWatchlist ? "star.fill" : "star")
                 }
-                .proGated(!isWatchlist && isFavLimitReached)
+                .proGated(!isWatchlist && isFavLimitReached, feature: .watchlist)
                 .accessibilityLabel(isWatchlist
                     ? String(localized: "action_remove_from_watchlist")
                     : String(localized: "action_add_to_watchlist"))
@@ -106,7 +106,11 @@ struct InstrumentInfoView: View {
         .sheet(isPresented: $showingNotificationSetup) {
             ExpirationNotificationSetupView(detail: detail, model: model)
         }
-        .sheet(isPresented: $showPaywall) { SubscriptionView() }
+        .sheet(isPresented: $showPaywall) {
+            SubscriptionView()
+                .onAppear { env.analytics.log(.paywallShown, [.source: AnalyticsSource.notificationRow.rawValue]) }
+        }
+        .trackScreen(.instrumentInfo)
         .task { await loadSpec() }
     }
 
@@ -228,8 +232,17 @@ struct InstrumentInfoView: View {
 
     private func toggleWatchlist() {
         if isWatchlist {
+            env.analytics.log(.instrumentRemoved, [
+                .exchange: detail.exchange.rawValue, .symbol: detail.symbol,
+            ])
             model.removeWatchlist(symbol: detail.symbol, exchange: detail.exchange)
         } else {
+            env.analytics.log(.instrumentAdded, [
+                .exchange: detail.exchange.rawValue,
+                .family: detail.family,
+                .symbol: detail.symbol,
+                .source: AnalyticsSource.instrumentInfo.rawValue,
+            ])
             Task { await model.addWatchlist(contract: detail.asSummary, exchange: detail.exchange) }
         }
     }

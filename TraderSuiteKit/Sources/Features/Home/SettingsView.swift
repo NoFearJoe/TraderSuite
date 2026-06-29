@@ -27,6 +27,7 @@ struct SettingsView: View {
 
             Section {
                 Button {
+                    env.analytics.log(.paywallShown, [.source: AnalyticsSource.settings.rawValue])
                     showSubscription = true
                 } label: {
                     HStack {
@@ -62,7 +63,11 @@ struct SettingsView: View {
                             .foregroundStyle(Color.accentColor)
                     }
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    env.analytics.log(.appShared)
+                })
                 Button {
+                    env.analytics.log(.appRated)
                     requestReview()
                 } label: {
                     Label {
@@ -74,6 +79,7 @@ struct SettingsView: View {
                     }
                 }
                 Button {
+                    env.analytics.log(.supportContacted)
                     openURL(supportEmail)
                 } label: {
                     Label {
@@ -94,6 +100,7 @@ struct SettingsView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
+        .trackScreen(.settings)
     }
 
     private var appVersion: String {
@@ -103,6 +110,7 @@ struct SettingsView: View {
 
 /// Subscription management via the native StoreKit subscription screen.
 struct SubscriptionView: View {
+    @Environment(AppEnvironment.self) private var env
     /// The single Premium subscription product.
     private static let premiumProductID = "com.mesterra.tradersuite.pro"
 
@@ -156,6 +164,14 @@ struct SubscriptionView: View {
         // to the app's preferred localization so it matches the rest of the UI
         // instead of falling back to English.
         .environment(\.locale, Locale(identifier: Bundle.main.preferredLocalizations.first ?? "en"))
+        .trackScreen(.paywall)
+        .onInAppPurchaseCompletion { _, result in
+            // Fires only on a real completed purchase from this paywall (not on
+            // restore or launch-time entitlement refresh), so it's a clean signal.
+            if case .success(let purchase) = result, case .success = purchase {
+                env.analytics.log(.subscriptionActivated)
+            }
+        }
     }
 }
 

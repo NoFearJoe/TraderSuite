@@ -64,6 +64,7 @@ public struct OnboardingView: View {
             showPaywall = false
             onFinish()
         }
+        .trackScreen(.onboarding)
     }
 
     // MARK: - Sections

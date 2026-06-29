@@ -36,7 +36,14 @@ struct TraderSuiteApp: App {
         }
         self.container = container
         let registry = AppEnvironment.makeDefaultRegistry()
-        _environment = State(initialValue: AppEnvironment(container: container, registry: registry))
+        // Analytics: activate AppMetrica once, then inject its reporter so screens
+        // and view models can log usage through the `AnalyticsReporting` seam.
+        AppMetricaSetup.activate()
+        _environment = State(initialValue: AppEnvironment(
+            container: container,
+            registry: registry,
+            analytics: AppMetricaSetup.makeReporter()
+        ))
     }
 
     var body: some Scene {

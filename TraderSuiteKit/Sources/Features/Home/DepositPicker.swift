@@ -37,7 +37,7 @@ struct DepositPickerSheet: View {
                     } label: {
                         Label(String(localized: "action_add_deposit"), systemImage: "plus")
                     }
-                    .proGated(isDepositLimitReached)
+                    .proGated(isDepositLimitReached, feature: .deposits)
                 }
             }
         }
@@ -61,6 +61,7 @@ struct DepositPickerSheet: View {
         } else {
             List(model.deposits) { deposit in
                 Button {
+                    env.analytics.log(.depositSelected, [.exchange: env.selectedExchange.rawValue])
                     onSelect(deposit.id)
                     dismiss()
                 } label: {
@@ -97,6 +98,7 @@ struct DepositPickerSheet: View {
                 riskPercentText: "2"
               )
         else { return false }
+        env.analytics.log(.depositCreated, [.exchange: exchange.rawValue])
         onSelect(created.id)
         return true
     }
